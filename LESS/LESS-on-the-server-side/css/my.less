@@ -1,5 +1,6 @@
-@import "css/init.css";
+@import "init.less";
 
+@main-color:black;
 /* Basics */
 html
 {
@@ -8,7 +9,7 @@ html
 }
 body
 {
-  background: #000;
+  background: @main-color;
 }
 h1
 {
@@ -35,7 +36,7 @@ h3
   border-radius: 5px;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
-  color: #000;
+  color: @main-color;
 }
 
 /* Sections */
