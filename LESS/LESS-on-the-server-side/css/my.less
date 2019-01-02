@@ -87,6 +87,15 @@ footer
   }
 }
 
+// Namespaces example
+// We can add Mixins to this module and then just call them where we need them.
+#contact-module {
+  .fonts(){
+    font-family: "Open Sans", Verdana, Helvetica, sans-serif;
+    font-size: @base-size;
+  }
+}
+
 /* Forms */
 #contact-form
 {
@@ -102,8 +111,9 @@ footer
   
   input[type=textbox], textarea
   {
-    font-family: "Open Sans", Verdana, Helvetica, sans-serif;
-    font-size: 18px;
+    //To call the Mixins we use the namespace in the #contact-module:
+    #contact-module > .fonts();
+
     background: #ffffe0;
     width: 250px;
     display: block;

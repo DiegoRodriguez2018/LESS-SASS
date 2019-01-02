@@ -166,6 +166,87 @@ We can also use type guards:
 }
 
 
+---
+## Nested Rules
+
+LESS allow us to  write nested rules, eg:
+
+nav
+{
+  font-size: 14px;
+  font-weight: bold;
+  float: right;
+  ul
+  {
+    list-style-type: none;
+    li
+    {
+      float: left;
+      margin: 2px;
+      a
+      {
+        text-decoration: none;
+        &:hover
+        {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+---
+### Combinators
+LESS recognises combinators (&). In the previous example text-decoration value will be node for all the anchors inside li, but note that if the anchor is also being hovered the value will change to underline. Important to note that there is no spaces in &:hover.
+
+
+### String interpolation
+To do string interpolation we need to type @{}
+eg.
+@root = '/images/'
+
+\#form{
+  background: url ("@{root}background.jpg");
+  //will produce url("/images/background.jpg");
+}
+
+### Using Javascript inside LESS
+We can use vanilla javascript if we need to:
+@root = '/images/'
+@app-root = `"@{root}".toUpperCase()`;
+
+Note that @{} isjust string inperpolation. Also note that to evaluate javascript we need to use backticks ``
+
+
+### Namespacing and Scope
+
+We can add Mixins to a LESS component and then just call them where we need them.
+\#contact-module {
+  .fonts(){
+    font-family: "Open Sans", Verdana, Helvetica, sans-serif;
+    font-size: @base-size;
+  }
+}
+
+  
+input[type=textbox], textarea
+{
+  
+  `#contact-module > .fonts();`
+
+  background: #ffffe0;
+  width: 250px;
+  display: block;
+  border: 1px #000 solid;
+
+  .rounded-corners-all(6px);
+
+  padding: 2px;
+}
+
+Note that to call the Mixin we just need to do #contact-module > .fonts(); Important to notice that @base-size runs on the scope of input, textarea{}. If we declare a new @base-size with a different value inside those components that will overide the global one. 
+
+
 
 
 
