@@ -408,3 +408,177 @@ This will produce:
   font-family: Vernada, Helvetica, sans-serif;
   font-size: 14px;
 }
+
+---
+### SASS directives
+Directives tells SASS that needs to do something, to declare them we use the @ sign. Important directives are:
+* @import
+* @export
+* @mixin
+* @function
+
+
+---
+### @import
+Used to import other css or scss files.
+@import "foo.css"
+
+@import "foo.scss"
+@import "foo" // note we can omit the extension if is scss
+
+SASS also allows nested imports too:
+
+#main{
+  @import "colors";
+}
+
+---
+### @extend
+We use @extend to inherit properties from other rules. eg
+
+.button{
+  color:black;
+}
+
+.submit-button{
+  @extend .button;
+  border: 1px Black solid;
+}
+
+This will produce:
+
+
+
+.submit-button{
+  border: 1px Black solid;
+}
+
+
+.button, .submit-button{
+  color:black;
+}
+
+SASS also allows multiple inheritance:
+
+.submit-button{
+  @extend a:hover;
+  @extend .button;
+  border: 1px Black solid;
+}
+
+---
+### @mixin and @include
+Like LESS we use mixins in SASS to write repeatable code, they feel like functions, can take arguments and support defaults and overloads. The way how we use them are a bit different than in LESS:
+
+To declare a mixin:
+@mixin font-large{
+  font: {
+    size:14px;
+    family: sans-serif;
+    weight:bold;
+  }
+}
+
+To use a mixin:
+\#form{
+  @include font-large;
+}
+
+Important to note we use @include to call our mixin.
+
+You can also pass parameters, and set default values:
+@mixin font-large($size: 20px){
+  font: {
+    size:$size;
+    family: sans-serif;
+    weight:bold;
+  }
+}
+
+---
+### @function and @return
+Mixins are useful to inject code into the css, but if we want to perform calculations @function is what we need:
+
+
+$app-width: 900px;
+@function column-width($cols){
+  @return ($app-width/$cols) - ($cols * 5px)
+}
+
+.col2{
+  width: column-width(2);
+}
+
+.col3{
+  width: column-width(3);
+}
+
+---
+### Control Flow
+In SASS we can do control flow. The main control flow directives are:
+
+* @if, @else if, @else
+* @for
+* @each
+* @while
+
+---
+### @if, @else if, @else
+
+h1{
+  @if $size > 14px {
+    color: blue;
+  }@else if $size < 14px{
+    color: black;
+  }@else {
+    color: white;
+  }
+}
+
+---
+### @for
+$app-size: 1024px;
+
+@for $colNumber from 1 through 5 {
+  .col-#{$colNumber}{
+    width: $app-size/$colNumber - 10px;
+  }
+}
+
+This will produce:
+
+.col-1 {
+  width: 1014px; }
+
+.col-2 {
+  width: 502px; }
+
+.col-3 {
+  width: 331.3333333333px; }
+
+.col-4 {
+  width: 246px; }
+
+.col-5 {
+  width: 194.8px; }
+
+---
+### each
+@each $item in first,second,third,fourth{
+  .#{$item}{
+    background-url: url(/images/#{$item}.jpg);
+  }
+}
+
+---
+### while
+
+$index: 1
+@while $index < 5 {
+  h#{$index}{
+    font-size: $index * 4px;
+    $index : $index + 1;
+  }
+}
+
+Note we need to increase the value of $index inside the loop.

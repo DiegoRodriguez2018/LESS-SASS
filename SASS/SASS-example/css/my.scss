@@ -1,7 +1,14 @@
 @import "init";
+@import "colors";
+@import "mixins";
 
-$mainColor : Black;
 $baseSize: 14px;
+
+//@function example
+$app-size: 1024px;
+@function center-width($gutter) {
+  @return $app-size - ($gutter * 2);
+}
 
 /* Basics */
 html
@@ -26,20 +33,50 @@ h3
   font-size: $baseSize + 4px;
 }
 
+
 /* Layout */
 #container
 {
   margin-top:5px;
-  width: 800px;
+
+  //Using our @function:
+  width: center-width(100);
+  
   margin-left: auto;
   margin-right: auto;
   background: #FFF;
   padding: 5px;
-  border-radius: 5px;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
+
+
+  @include set-rounded-corners(8px);
+  
   color: $mainColor;
 }
+
+
+//@for example
+
+@for $colNumber from 1 through 5 {
+  .col-#{$colNumber}{
+    width: $app-size/$colNumber - 10px;
+  }
+}
+
+//This will produce:
+// .col-1 {
+//   width: 1014px; }
+
+// .col-2 {
+//   width: 502px; }
+
+// .col-3 {
+//   width: 331.3333333333px; }
+
+// .col-4 {
+//   width: 246px; }
+
+// .col-5 {
+//   width: 194.8px; }
 
 /* Sections */
 header h1
@@ -52,8 +89,10 @@ header h1
 
 nav
 {
-  font-size: 14px;
-  font-weight: bold;
+  font{
+    size: 14px;
+    weight: bold;
+  }
   float: right;
   ul
   {
@@ -97,11 +136,8 @@ footer
   margin-left: auto;
   margin-right: auto;
   border: black 1px solid;
-  border-radius: 5px;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
+  @include set-rounded-corners;
   padding: 5px;
-
 }
 #contact-form input[type=textbox], #contact-form textarea
 {
