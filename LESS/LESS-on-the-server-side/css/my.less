@@ -53,41 +53,38 @@ header h1
   font-family: 'Share', cursive;
   color: Blue;
 }
+
 nav
 {
   font-size: 14px;
   font-weight: bold;
   float: right;
+  ul{
+    list-style-type: none;
+    li{
+      float: left;
+      margin: 2px;
+    a{
+      text-decoration: none;
+      &:hover{
+        text-decoration: underline;
+      }
+    }
+    }
+  }
 }
-nav ul
-{
-  list-style-type: none;
-}
-nav ul li
-{
-  float: left;
-  margin: 2px;
-}
-nav ul li a
-{
-  text-decoration: none;
-}
-nav ul li a:hover
-{
-  text-decoration: underline;
-}
+
 footer
 {
   font-size: 9px;
   text-align: center;
   color: Blue;
-}
-footer nav
-{
-  float: none;
-  display: inline-block;
-  font-size: 9px;
-  vertical-align: middle;
+  nav{
+    float: none;
+    display: inline-block;
+    font-size: 9px;
+    vertical-align: middle;
+  }
 }
 
 /* Forms */
@@ -102,31 +99,31 @@ footer nav
   .rounded-corners-all(6px);
 
   padding: 5px;
+  
+  input[type=textbox], textarea
+  {
+    font-family: "Open Sans", Verdana, Helvetica, sans-serif;
+    font-size: 18px;
+    background: #ffffe0;
+    width: 250px;
+    display: block;
+    border: 1px #000 solid;
 
-}
-#contact-form input[type=textbox], #contact-form textarea
-{
-  font-family: "Open Sans", Verdana, Helvetica, sans-serif;
-  font-size: 18px;
-  background: #ffffe0;
-  width: 250px;
-  display: block;
-  border: 1px #000 solid;
+    .rounded-corners-all(6px);
 
-  .rounded-corners-all(6px);
-
-  padding: 2px;
-}
-#contact-form textarea
-{
-  height: 150px;
-  font-family: "Open Sans", Verdana, Helvetica, sans-serif;
-}
-#contact-form label
-{
-  width: 150px;
-}
-#contact-form .validation
-{
-  display: none;
+    padding: 2px;
+  }
+  textarea
+  {
+    height: 150px;
+    font-family: "Open Sans", Verdana, Helvetica, sans-serif;
+  }
+  label
+  {
+    width: 150px;
+  }
+  .validation
+  {
+    display: none;
+  }
 }
