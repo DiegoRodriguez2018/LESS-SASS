@@ -18,16 +18,16 @@ html {
   font-size: 14px; }
 
 body {
-  background: #000; }
+  background: #333333; }
 
 h1 {
-  font-size: 26px; }
+  font-size: 24px; }
 
 h2 {
-  font-size: 18px; }
+  font-size: 20px; }
 
 h3 {
-  font-size: 16px; }
+  font-size: 18px; }
 
 /* Layout */
 #container {
@@ -40,7 +40,7 @@ h3 {
   border-radius: 5px;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
-  color: #000; }
+  color: Black; }
 
 /* Sections */
 header h1 {
@@ -52,30 +52,25 @@ nav {
   font-size: 14px;
   font-weight: bold;
   float: right; }
-
-nav ul {
-  list-style-type: none; }
-
-nav ul li {
-  float: left;
-  margin: 2px; }
-
-nav ul li a {
-  text-decoration: none; }
-
-nav ul li a:hover {
-  text-decoration: underline; }
+  nav ul {
+    list-style-type: none; }
+    nav ul li {
+      float: left;
+      margin: 2px; }
+      nav ul li a {
+        text-decoration: none; }
+        nav ul li a:hover {
+          text-decoration: underline; }
 
 footer {
   font-size: 9px;
   text-align: center;
   color: Blue; }
-
-footer nav {
-  float: none;
-  display: inline-block;
-  font-size: 9px;
-  vertical-align: middle; }
+  footer nav {
+    float: none;
+    display: inline-block;
+    font-size: 9px;
+    vertical-align: middle; }
 
 /* Forms */
 #contact-form {

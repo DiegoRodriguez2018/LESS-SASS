@@ -1,5 +1,8 @@
 @import "init";
 
+$mainColor : Black;
+$baseSize: 14px;
+
 /* Basics */
 html
 {
@@ -8,19 +11,19 @@ html
 }
 body
 {
-  background: #000;
+  background: lighten($mainColor,20%);
 }
 h1
 {
-  font-size: 26px;
+  font-size: $baseSize + 10px;
 }
 h2
 {
-  font-size: 18px;
+  font-size: $baseSize + 6px;
 }
 h3
 {
-  font-size: 16px;
+  font-size: $baseSize + 4px;
 }
 
 /* Layout */
@@ -35,7 +38,7 @@ h3
   border-radius: 5px;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
-  color: #000;
+  color: $mainColor;
 }
 
 /* Sections */
@@ -45,42 +48,46 @@ header h1
   font-family: 'Share', cursive;
   color: Blue;
 }
+
+
 nav
 {
   font-size: 14px;
   font-weight: bold;
   float: right;
+  ul
+  {
+    list-style-type: none;
+    li
+    {
+      float: left;
+      margin: 2px;
+      a
+      {
+        text-decoration: none;
+        &:hover
+        {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
 }
-nav ul
-{
-  list-style-type: none;
-}
-nav ul li
-{
-  float: left;
-  margin: 2px;
-}
-nav ul li a
-{
-  text-decoration: none;
-}
-nav ul li a:hover
-{
-  text-decoration: underline;
-}
+
 footer
 {
   font-size: 9px;
   text-align: center;
   color: Blue;
+  nav
+  {
+    float: none;
+    display: inline-block;
+    font-size: 9px;
+    vertical-align: middle;
+  }
 }
-footer nav
-{
-  float: none;
-  display: inline-block;
-  font-size: 9px;
-  vertical-align: middle;
-}
+
 
 /* Forms */
 #contact-form

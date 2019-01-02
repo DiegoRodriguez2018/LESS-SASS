@@ -271,3 +271,140 @@ After installing globally we have access to the `sass` command.
 A handy flag is --watch, this will tell sass to watch for file changes and recompile if they occur. 
 
 `sass --watch input.scss:output.css`
+
+
+---
+### Variables:
+Similar to LESS, but instead of @ we use the dollar sign $:
+$main-color:Blue;
+
+And to use it:
+background: $main-color;
+
+---
+### Operations
+SASS allows us to perform inline operations:
+eg.
+font-size : 4px + 4;
+color: #FFF / 4
+
+---
+### Color functions:
+SASS also have some inbuilt color functions:
+color : lighten ($color, 10%);
+color : darken ($color, 10%);
+
+Popular functions include:
+* Saturate
+* Desaturate
+* fadein
+* fadeout
+* invert
+* complement
+  
+### Other functions:
+Strings:
+* quote ($sometext)
+* unquote ($sometext)
+
+Math:
+* round
+* ceil
+* floor
+* percentage
+
+If method:
+* $value: if(true, $color1, $color2);
+
+---
+### String interpolation
+In SASS to perform string interpolation we need to use #{$<variable-name>}
+eg.
+$root = '/images/'
+
+\#form{
+  background: url ("#{$root}background.jpg");
+  //will produce url("/images/background.jpg");
+}
+
+Note that in SASS we can use string interpolation anywhere in the scss file. For example:
+
+$class-name : 'my-form';
+
+.#{$class-name}{
+  color:blue;
+}
+
+This will produce:
+.my-form{
+  color:blue;
+}
+
+An useful application of this would be:
+
+$baseClassName : 'col';
+
+.#{$baseClassName}-1{
+  color:blue;
+}
+
+.#{$baseClassName}-2{
+  color:red;
+}
+
+
+This will produce
+
+.col-1{
+  color:blue;
+}
+
+.col-2{
+  color:red;
+}
+
+---
+### Rules
+SASS rules are very similar to LESS:
+
+nav
+{
+  font-size: 14px;
+  font-weight: bold;
+  float: right;
+  ul
+  {
+    list-style-type: none;
+    li
+    {
+      float: left;
+      margin: 2px;
+      a
+      {
+        text-decoration: none;
+        &:hover
+        {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+Note that combinators (&) are also supported.
+
+SASS also allows us to use nested properties, eg:
+
+.button{
+  font: {
+    family: Vernada, Helvetica, sans-serif;
+    size: 14px;
+  }
+}
+
+This will produce:
+
+.button{
+  font-family: Vernada, Helvetica, sans-serif;
+  font-size: 14px;
+}
