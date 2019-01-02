@@ -199,7 +199,7 @@ nav
 ### Combinators
 LESS recognises combinators (&). In the previous example text-decoration value will be node for all the anchors inside li, but note that if the anchor is also being hovered the value will change to underline. Important to note that there is no spaces in &:hover.
 
-
+---
 ### String interpolation
 To do string interpolation we need to type @{}
 eg.
@@ -210,6 +210,7 @@ eg.
   //will produce url("/images/background.jpg");
 }
 
+---
 ### Using Javascript inside LESS
 We can use vanilla javascript if we need to:
 @root = '/images/'
@@ -217,7 +218,7 @@ We can use vanilla javascript if we need to:
 
 Note that @{} isjust string inperpolation. Also note that to evaluate javascript we need to use backticks ``
 
-
+---
 ### Namespacing and Scope
 
 We can add Mixins to a LESS component and then just call them where we need them.
@@ -246,7 +247,27 @@ input[type=textbox], textarea
 
 Note that to call the Mixin we just need to do #contact-module > .fonts(); Important to notice that @base-size runs on the scope of input, textarea{}. If we declare a new @base-size with a different value inside those components that will overide the global one. 
 
+---
+---
+# SASS
+SASS is similar to LESS, it stands for Syntatically Awesome StyleSheets, its a Dynamic Style Sheet Language and compiles to CSS just like LESS. 
+
+SASS also has two syntaxes.
+1. SASS: the original syntax and is based on indention (like python). It does not feel like CSS and CSS files are not valid SASS files. 
+2. SCSS: is a more common syntax, it feels like CSS and CSS files are valid SCSS files. 
 
 
+---
+### SASS on the server side:
+There is support for Node.js, ASP.NET, and Rails. There are also many install options including downloading the package from github and adding it to your path, homebrew for Mac and even some GUI applications.
 
+For node we just install the package globally:
+`npm install -g sass`
 
+After installing globally we have access to the `sass` command.
+
+`sass input.scss output.css`
+
+A handy flag is --watch, this will tell sass to watch for file changes and recompile if they occur. 
+
+`sass --watch input.scss:output.css`
