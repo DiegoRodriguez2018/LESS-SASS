@@ -1,11 +1,19 @@
 @import "init.less";
+//note you can ommit the extension and it will assume is .less
+@import "mycolors";
+@import "mixins";
 
-@main-color:black;
+//Declaring variables:
+@base-size: 16px;
+
+// Note that if @size is not supplied the default value will be 5px.
+
+
 /* Basics */
 html
 {
   font-family: 'Open Sans', verdana, helvetica, sans-serif;
-  font-size: 14px;
+  font-size: @base-size;
 }
 body
 {
@@ -13,15 +21,15 @@ body
 }
 h1
 {
-  font-size: 24px;
+  font-size: @base-size + 10px;
 }
 h2
 {
-  font-size: 18px;
+  font-size: @base-size + 4px;
 }
 h3
 {
-  font-size: 16px;
+  font-size: @base-size + 2px;
 }
 
 /* Layout */
@@ -33,10 +41,9 @@ h3
   margin-right: auto;
   background: #FFF;
   padding: 5px;
-  border-radius: 5px;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  color: @main-color;
+
+  .rounded-corners-all(10px);
+  color: darken(@main-color, 10%);
 }
 
 /* Sections */
@@ -91,9 +98,9 @@ footer nav
   margin-left: auto;
   margin-right: auto;
   border: black 1px solid;
-  border-radius: 5px;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
+
+  .rounded-corners-all(6px);
+
   padding: 5px;
 
 }
@@ -105,9 +112,9 @@ footer nav
   width: 250px;
   display: block;
   border: 1px #000 solid;
-  border-radius: 5px;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
+
+  .rounded-corners-all(6px);
+
   padding: 2px;
 }
 #contact-form textarea
